@@ -1,0 +1,177 @@
+#include<GL/freeglut.h>
+#include<math.h>
+
+//global variable declarations
+bool isFullScreen = false;	//variable to toggle fullscreen
+
+int main(int argc, char **argv)
+{
+	//function prototypes
+	void display(void);
+	void resize(int, int);
+	void keyboard(unsigned char, int, int);
+	void mouse(int, int, int, int);
+	void initialize(void);
+	void uninitialize(void);
+
+	//code
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(800, 800);
+	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) / 2) - 400, (glutGet(GLUT_SCREEN_HEIGHT) / 2) - 400); //get height and width of screen and then find center coordinates
+	glutCreateWindow("GLUT Applications");
+
+	initialize();
+
+	glutDisplayFunc(display);
+	glutReshapeFunc(resize);
+	glutKeyboardFunc(keyboard);
+	glutMouseFunc(mouse);
+	glutCloseFunc(uninitialize);
+	glutMainLoop();
+
+	//	return(0);
+}
+
+void display(void)
+{
+
+	void DH_triangle(void);
+	void DH_line(void);
+	void DH_circle(void);
+	//code
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	DH_triangle();
+	DH_line();
+	DH_circle();
+
+	glutSwapBuffers();
+}
+
+
+void DH_triangle(void)	//Deathly Hallows triangle
+{
+
+	glLineWidth(1.0f);
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+
+	glVertex3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+
+	glVertex3f(1.0f, -1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glEnd();
+
+}
+
+void DH_line(void)	//Deathly Hallows line
+{
+
+	glLineWidth(1.0f);
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 1.0f, 1.0f);
+
+	glVertex3f(0.0f, 1.0f, 0.0f);;
+	glVertex3f(0.0f, -1.0f, 0.0f);
+
+	glEnd();
+
+}
+
+
+void DH_circle(void)	//Deathly Hallows circle
+{
+	const float PI = 3.1415f;
+
+	GLint circle_points = 1000;
+	GLfloat angle;
+	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	for (int i = 0; i < circle_points; i++)
+	{
+		angle = 2 * PI * i / circle_points;
+		glVertex2f((0.618035 * cos(angle)), ((0.618035 * sin(angle))) - (0.38f));
+	}
+	glEnd();
+
+}
+/*
+Radius of incircle = Area of triangle/ Semi-Perimeter
+Area = half* base * height ==> (1/2)/ * 2 * 2
+Semi-Perimeter	= (side1 + side2 +side3) /2
+==> (v5 + v5 + 2)/2
+= (v5 + 1)
+Radius	= 2/(v5 + 1)
+= 0.618035
+
+*/
+
+void initialize(void)
+{
+	//code
+
+	//to select clearing(background) clear
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+void keyboard(unsigned char key, int x, int y)
+{
+	//code
+
+	switch (key)
+	{
+	case 27:	//Escape
+		glutLeaveMainLoop();
+		break;
+	case 'F':
+	case 'f':
+		if (isFullScreen == false)
+		{
+			glutFullScreen();
+			isFullScreen = true;
+
+		}
+		else
+		{
+			glutLeaveFullScreen();
+			isFullScreen = false;
+
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void mouse(int button, int state, int x, int y)
+{
+	//code
+
+	switch (button)
+	{
+	case GLUT_LEFT_BUTTON:
+		break;
+	default:
+		break;
+	}
+}
+
+void resize(int width, int height)
+{
+	//code
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+}
+
+void uninitialize(void)
+{
+	//code
+}
