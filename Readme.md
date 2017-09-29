@@ -46,4 +46,6 @@ B. XWindows(Linux):
 3. 3D shapes using log file (to log errors)
 
 More assignments will be added upon completion.
-Screen shots and exe's of assignments(excepts for a few one's)
+Screen shots and exe's of assignments(excepts for a few one's).
+Run the exe to view output of each assignment/project. 
+(Note: Some assignments operate on keypress. So check the source code for more information)
