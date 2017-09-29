@@ -1,0 +1,177 @@
+#include<GL/freeglut.h>
+#include<math.h>
+
+//global variable declarations
+bool isFullScreen = false;	//variable to toggle fullscreen
+
+int main(int argc, char **argv)
+{
+	//function prototypes
+	void display(void);
+	void resize(int, int);
+	void keyboard(unsigned char, int, int);
+	void mouse(int, int, int, int);
+	void initialize(void);
+	void uninitialize(void);
+
+	//code
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(800, 600);
+	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) / 2) - 400, (glutGet(GLUT_SCREEN_HEIGHT) / 2) - 300); //get height and width of screen and then find center coordinates
+	glutCreateWindow("GLUT Applications");
+
+	initialize();
+
+	glutDisplayFunc(display);
+	glutReshapeFunc(resize);
+	glutKeyboardFunc(keyboard);
+	glutMouseFunc(mouse);
+	glutCloseFunc(uninitialize);
+	glutMainLoop();
+
+	//	return(0);
+}
+
+void display(void)
+{
+
+	void ConcentricTriangles(float);
+
+	//code
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	for (float i = 0.0f; i < 1.0f; i = i + 0.1f)
+		ConcentricTriangles(i);
+
+	glutSwapBuffers();
+}
+
+
+void ConcentricTriangles(float size)
+{
+	void TriangleColor(float);
+	// Triangle
+
+	glLineWidth(1.0f);
+	glBegin(GL_LINES);
+	TriangleColor(size);
+
+	glVertex3f(0.0f, 1.0f - size, 0.0f);
+	glVertex3f(-1.0f + size, -1.0f + size, 0.0f);
+	glVertex3f(-1.0f + size, -1.0f + size, 0.0f);
+	glVertex3f(1.0f - size, -1.0f + size, 0.0f);
+	glVertex3f(1.0f - size, -1.0f + size, 0.0f);
+	glVertex3f(0.0f, 1.0f - size, 0.0f);
+
+	glEnd();
+
+}
+
+void TriangleColor(float value)
+{
+	if (0.0f - value < 0.00001f)	//red
+	{
+		glColor3f(1.0f, 0.0f, 0.0f);
+	}
+	if (0.1f - value < 0.00001f)	//green
+	{
+		glColor3f(0.0f, 1.0f, 0.0f);
+	}
+	if (0.2f - value < 0.00001f)	//blue
+	{
+		glColor3f(0.0f, 0.0f, 1.0f);
+	}
+	if (0.3f - value < 0.00001f)	//cyan
+	{
+		glColor3f(0.0f, 1.0f, 1.0f);
+	}
+	if (0.4f - value < 0.00001f)	//magenta
+	{
+		glColor3f(1.0f, 0.0f, 1.0f);
+	}
+	if (0.5f - value < 0.00001f)	//yellow
+	{
+		glColor3f(1.0f, 1.0f, 0.0f);
+	}
+	if (0.6f - value < 0.00001f)	//orange
+	{
+		glColor3f(1.0f, 0.5f, 0.0f);
+	}
+	if (0.7f - value < 0.00001f)	//gray
+	{
+		glColor3f(0.5f, 0.5f, 0.5f);
+	}
+	if (0.8f - value < 0.00001f)	//brown 
+	{
+		glColor3f(0.647059f, 0.164706f, 0.164706f);
+	}
+	if (0.9f - value < 0.00001f)	//white
+	{
+		glColor3f(1.0f, 1.0f, 1.0f);
+	}
+}
+
+void initialize(void)
+{
+	//code
+
+	//to select clearing(background) clear
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+void keyboard(unsigned char key, int x, int y)
+{
+	//code
+
+	switch (key)
+	{
+	case 27:	//Escape
+		glutLeaveMainLoop();
+		break;
+	case 'F':
+	case 'f':
+		if (isFullScreen == false)
+		{
+			glutFullScreen();
+			isFullScreen = true;
+
+		}
+		else
+		{
+			glutLeaveFullScreen();
+			isFullScreen = false;
+
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void mouse(int button, int state, int x, int y)
+{
+	//code
+
+	switch (button)
+	{
+	case GLUT_LEFT_BUTTON:
+		break;
+	default:
+		break;
+	}
+}
+
+void resize(int width, int height)
+{
+	//code
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+}
+
+void uninitialize(void)
+{
+	//code
+}

@@ -1,0 +1,272 @@
+#include<GL/freeglut.h>
+#include<math.h>
+
+//global variable declarations
+bool isFullScreen = false;	//variable to toggle fullscreen
+
+int main(int argc, char **argv)
+{
+	//function prototypes
+	void display(void);
+	void resize(int, int);
+	void keyboard(unsigned char, int, int);
+	void mouse(int, int, int, int);
+	void initialize(void);
+	void uninitialize(void);
+
+	//code
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(800, 800);
+	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) / 2) - 400, (glutGet(GLUT_SCREEN_HEIGHT) / 2) - 400); //get height and width of screen and then find center coordinates
+	glutCreateWindow("GLUT Applications");
+
+	initialize();
+
+	glutDisplayFunc(display);
+	glutReshapeFunc(resize);
+	glutKeyboardFunc(keyboard);
+	glutMouseFunc(mouse);
+	glutCloseFunc(uninitialize);
+	glutMainLoop();
+
+	//	return(0);
+}
+
+void display(void)
+{
+
+	void A_head(void);
+	void A_body(void);
+	void A_arms(void);
+	//code
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	A_head();
+	A_body();
+	A_arms();
+
+	glutSwapBuffers();
+}
+
+
+void A_head(void)	//Android head
+{
+	const float PI = 3.1415f;
+
+	GLint circle_points = 10000;
+	GLfloat angle;
+	GLfloat radius_head = 0.5f;
+
+	//Semicircular head
+	glBegin(GL_LINE_LOOP);
+	glColor3f(0.0f, 1.0f, 0.0f); //Green color
+
+	for (int i = 0; i < circle_points; i++)
+	{
+		angle = PI * i / circle_points;
+		glVertex3f(0.0f, 0.3f, 0.0f);
+		glVertex3f(radius_head*cos(angle), radius_head*sin(angle)+0.3,0.0f); //+0.3 at angle sin, will push the semicircle up along the y axis
+	}
+	glEnd();
+
+	//antena
+	glLineWidth(10.0f);
+	glEnable(GL_LINE_SMOOTH);
+//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glBegin(GL_LINES);
+
+	glVertex3f(0.2f, 0.6f, 0.0f);
+	glVertex3f(0.4f, 0.9f, 0.0f);
+
+	glVertex3f(-0.2f, 0.6f, 0.0f);
+	glVertex3f(-0.4f, 0.9f, 0.0f);
+
+	glEnd();
+
+	//eyes
+	GLfloat radius_eyes = 0.05f;
+	//left eye
+	glLineWidth(1.0f);
+	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0f, 1.0f, 1.0f); //White color
+	for (int i = 0; i < circle_points; i++)
+	{
+		angle = 2 * PI * i / circle_points;
+		glVertex3f(-0.2f, 0.5f, 0.0f);
+		glVertex3f((radius_eyes*cos(angle))-0.2f, (radius_eyes*sin(angle))+0.5f, 0.0f);
+	}
+	glEnd();
+
+	//right eye
+	glLineWidth(1.0f);
+	glBegin(GL_LINE_LOOP);
+	for (int i = 0; i < circle_points; i++)
+	{
+		angle = 2 * PI * i / circle_points;
+		glVertex3f(0.2f, 0.5f, 0.0f);
+		glVertex3f((radius_eyes*cos(angle))+0.2f, (radius_eyes*sin(angle))+0.5f, 0.0f);
+	}
+	glEnd();
+
+}
+
+void A_body(void)
+{
+	//Front body
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(-0.5f, 0.25f, 0.0f);
+	glVertex3f(-0.5f, -0.5f, 0.0f);
+
+	glVertex3f(-0.5f, -0.5f, 0.0f);
+	glVertex3f(0.5f, -0.5f, 0.0f);
+
+	glVertex3f(0.5f, -0.5f, 0.0f);
+	glVertex3f(0.5f, 0.25f, 0.0f);
+
+	glVertex3f(0.5f, 0.25f, 0.0f);
+	glVertex3f(-0.5f, 0.25f, 0.0f);
+	
+	glEnd();
+
+	//Legs
+	//left leg
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(-0.3f, -0.5f, 0.0f);
+	glVertex3f(-0.3f, -0.85f, 0.0f);
+
+	glVertex3f(-0.3f, -0.85f, 0.0f);
+	glVertex3f(-0.1f, -0.85f, 0.0f);
+
+	glVertex3f(-0.1f, -0.85f, 0.0f);
+	glVertex3f(-0.1f, -0.5f, 0.0f);
+
+	glVertex3f(-0.1f, -0.5f, 0.0f);
+	glVertex3f(-0.3f, -0.5f, 0.0f);
+
+	glEnd();
+
+	//right leg
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.1f, -0.5f, 0.0f);
+	glVertex3f(0.1f, -0.85f, 0.0f);
+
+	glVertex3f(0.1f, -0.85f, 0.0f);
+	glVertex3f(0.3f, -0.85f, 0.0f);
+
+	glVertex3f(0.3f, -0.85f, 0.0f);
+	glVertex3f(0.3f, -0.5f, 0.0f);
+
+	glVertex3f(0.3f, -0.5f, 0.0f);
+	glVertex3f(0.1f, -0.5f, 0.0f);
+	glEnd();
+	
+}
+
+void A_arms(void)
+{
+	//left arm
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 0.0f);
+
+	glVertex3f(-0.55f, 0.3f, 0.0f);
+	glVertex3f(-0.55f, -0.35f, 0.0f);
+
+	glVertex3f(-0.55f, -0.35f, 0.0f);
+	glVertex3f(-0.75f, -0.35f, 0.0f);
+
+	glVertex3f(-0.75f, -0.35f, 0.0f);
+	glVertex3f(-0.75f, 0.3f, 0.0f);
+
+	glVertex3f(-0.75f, 0.3f, 0.0f);
+	glVertex3f(-0.55f, 0.3f, 0.0f);
+
+	glEnd();
+
+	//right arm
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 0.0f);
+
+	glVertex3f(0.55f, 0.3f, 0.0f);
+	glVertex3f(0.55f, -0.35f, 0.0f);
+
+	glVertex3f(0.55f, -0.35f, 0.0f);
+	glVertex3f(0.75f, -0.35f, 0.0f);
+
+	glVertex3f(0.75f, -0.35f, 0.0f);
+	glVertex3f(0.75f, 0.3f, 0.0f);
+
+	glVertex3f(0.75f, 0.3f, 0.0f);
+	glVertex3f(0.55f, 0.3f, 0.0f);
+
+	glEnd();
+
+}
+
+
+void initialize(void)
+{
+	//code
+
+	//to select clearing(background) clear
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+void keyboard(unsigned char key, int x, int y)
+{
+	//code
+
+	switch (key)
+	{
+	case 27:	//Escape
+		glutLeaveMainLoop();
+		break;
+	case 'F':
+	case 'f':
+		if (isFullScreen == false)
+		{
+			glutFullScreen();
+			isFullScreen = true;
+
+		}
+		else
+		{
+			glutLeaveFullScreen();
+			isFullScreen = false;
+
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void mouse(int button, int state, int x, int y)
+{
+	//code
+
+	switch (button)
+	{
+	case GLUT_LEFT_BUTTON:
+		break;
+	default:
+		break;
+	}
+}
+
+void resize(int width, int height)
+{
+	//code
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+}
+
+void uninitialize(void)
+{
+	//code
+}
