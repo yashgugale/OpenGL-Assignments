@@ -49,3 +49,4 @@ More assignments will be added upon completion.
 Screen shots and exe's of assignments(excepts for a few one's).
 Run the exe to view output of each assignment/project. 
 (Note: Some assignments operate on keypress. So check the source code for more information)
+(Videos have been added for some animations)
