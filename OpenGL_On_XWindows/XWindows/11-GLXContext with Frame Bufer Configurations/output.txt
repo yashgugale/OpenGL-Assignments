@@ -1,0 +1,16 @@
+ ./GLXContext\ with\ FrameBuffer\ configurations 
+10 Matching FB Configs found.
+Matching Framebuffer Config = 0 : Visual ID = 0x102 : Sample_BUFFERS = 0 : SAMPLES = 0
+Matching Framebuffer Config = 1 : Visual ID = 0x188 : Sample_BUFFERS = 0 : SAMPLES = 0
+Matching Framebuffer Config = 2 : Visual ID = 0x122 : Sample_BUFFERS = 1 : SAMPLES = 2
+Matching Framebuffer Config = 3 : Visual ID = 0x208 : Sample_BUFFERS = 1 : SAMPLES = 2
+Matching Framebuffer Config = 4 : Visual ID = 0x124 : Sample_BUFFERS = 1 : SAMPLES = 4
+Matching Framebuffer Config = 5 : Visual ID = 0x210 : Sample_BUFFERS = 1 : SAMPLES = 4
+Matching Framebuffer Config = 6 : Visual ID = 0x134 : Sample_BUFFERS = 1 : SAMPLES = 8
+Matching Framebuffer Config = 7 : Visual ID = 0x220 : Sample_BUFFERS = 1 : SAMPLES = 8
+Matching Framebuffer Config = 8 : Visual ID = 0x142 : Sample_BUFFERS = 1 : SAMPLES = 16
+Matching Framebuffer Config = 9 : Visual ID = 0x228 : Sample_BUFFERS = 1 : SAMPLES = 16
+Choose Visual ID = 0x142
+OpenGL Context 4.5 is created.
+Direct GLX Rendering Context Obtained
+
