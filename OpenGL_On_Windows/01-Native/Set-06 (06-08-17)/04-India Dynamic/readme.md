@@ -1,3 +1,8 @@
+About: 
+This program demonstrates the use of basic drawing primitives in OpenGL to create a simple animation of the text "INDIA".
+Window is created using Win32 programming and sound is added for effect.
+
+
 Steps to compile/run:
 1. Open "Visual Studio" (preferably 2010, 2015 or 2017.)
 2. Create an "empty win32 project".
