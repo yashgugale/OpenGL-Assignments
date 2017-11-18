@@ -1,3 +1,7 @@
+About:
+This program demonstrates the use texture in OpenGL. Two textures: 1. Stone 2. Kundali(Horoscope chart) are mapped on a pyramid and a cube. 
+
+
 Required libraries:
 1. SOIL
 
