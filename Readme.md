@@ -28,7 +28,13 @@ B. Object movements:
 4. Multicolored cube rotation about x,y,x axes
 5. Multicolored cube by replacing gl functions *
 
-C. Combining Concepts:
+C. Texture and lights:
+1. Using texture on 2D surface.
+2. Using texture of cube and pyramid.
+3. Use of 1 light on 3d object
+4. Using multiple lights and rotating the lights to view effect.
+
+D. Combining Concepts:
 1. Robot arm
 2. Solar system
 3. India Static
