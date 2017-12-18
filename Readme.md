@@ -37,7 +37,7 @@ C. Texture and lights:
 6. Effect on different materials
 7. Spotlight
 
-D. Model Loading
+D. Model Loading (using obj parser)
 1. MonkeyHead (WireFrame and 3D with lights)
 
 E. Combining Concepts:
