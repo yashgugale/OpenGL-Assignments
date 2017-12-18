@@ -38,7 +38,7 @@ C. Texture and lights:
 7. Spotlight
 
 D. Model Loading (using obj parser)
-1. MonkeyHead (WireFrame and 3D with lights)
+1. MonkeyHead (WireFrame and 3D with lights)*
 
 E. Combining Concepts:
 1. Robot arm
