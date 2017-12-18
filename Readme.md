@@ -29,19 +29,24 @@ B. Object movements:
 5. Multicolored cube by replacing gl functions *
 
 C. Texture and lights:
-1. Using texture on 2D surface.
-2. Using texture of cube and pyramid.
-3. Use of 1 light on 3d object
-4. Using multiple lights and rotating the lights to view effect.
+1. Using texture on 2D surface and tweaking.
+2. Using texture on cube and pyramid.
+3. Checker-board texture
+4. Use of 1 light on 3d object
+5. Using multiple lights and rotating the lights to view effect.
+6. Effect on different materials
+7. Spotlight
 
-D. Combining Concepts:
+D. Model Loading
+1. MonkeyHead (WireFrame and 3D with lights)
+
+E. Combining Concepts:
 1. Robot arm
 2. Solar system
 3. India Static
 4. India Dynamic *
 
-
-D. Others:
+F. Others:
 1. Bowling INC
 2. Super Mario and bug
 3. Android and Google logo rotation on key press
